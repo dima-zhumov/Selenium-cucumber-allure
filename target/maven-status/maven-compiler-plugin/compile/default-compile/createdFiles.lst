@@ -1,0 +1,4 @@
+pages\BasePage.class
+pages\SberbankPage.class
+TestProperties.class
+pages\MortgagePage.class
