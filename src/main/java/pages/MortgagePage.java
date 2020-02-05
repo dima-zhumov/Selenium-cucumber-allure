@@ -1,6 +1,4 @@
 package pages;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,7 +18,7 @@ public class MortgagePage extends BasePage {
     }
 
     @FindBy(xpath = "//iframe[@id='iFrameResizer0']")
-    public WebElement element;
+    public WebElement iframe;
 
     @FindBy(xpath = "//input[@id='estateCost']")
     public WebElement estateCost;
@@ -31,16 +29,35 @@ public class MortgagePage extends BasePage {
     @FindBy(xpath = "//input[@id='creditTerm']")
     public WebElement creditTerm;
 
-   // @FindBy(xpath = "//div[@class='dcCalc_switch-tablet']//input[@data-test-id='paidToCard']")
     @FindBy(xpath = "//label[@class='dcCalc_switch dcCalc_switch_size_medium dcCalc_switch_checked']/input[@data-test-id='paidToCard']")
     public WebElement paidToCardCheck;
 
-//    @FindBy(xpath = "//span[@class='dcCalc_switch__control']")
-//    public List<WebElement> paidToCardButton;
+    @FindBy(xpath = "//label[@class='dcCalc_switch dcCalc_switch_size_medium dcCalc_switch_checked']/input[@data-test-id='canConfirmIncome']")
+    public WebElement canConfirmCheck;
 
-    public List<WebElement> paidToCardButton(){
-        return this.driver.findElements(By.xpath("//span[@class='dcCalc_switch__control']"));
-    }
+    @FindBy(xpath = "//label[@class='dcCalc_switch dcCalc_switch_size_medium']/input[@data-test-id='youngFamilyDiscount']")
+    public WebElement youngFamilyCheck;
+
+    @FindBy(xpath = "//div[@class='dcCalc_disclaimer']")
+    public WebElement viewPort1;
+
+    @FindBy(xpath = "//h2[contains(text(),'решение')]")
+    public WebElement viewPort2;
+
+    @FindBy(xpath = "//span[@class='dcCalc_switch__control']")
+    public List<WebElement> switchControl;
+
+    @FindBy(xpath = "//span[@data-test-id='amountOfCredit']")
+    public WebElement amountOfCredit;
+
+    @FindBy(xpath = "//span[@data-test-id='monthlyPayment']")
+    public WebElement monthlyPayment;
+
+    @FindBy(xpath = "//span[@data-test-id='requiredIncome']")
+    public WebElement requiredIncome;
+
+    @FindBy(xpath = "//span[@data-test-id='rate']")
+    public WebElement rate;
 
 
     public void inputEstateCost()throws InterruptedException{
@@ -96,19 +113,20 @@ public class MortgagePage extends BasePage {
         }
     }
 
-//    public void paidToCard(List<WebElement> card){
-//        if (paidToCardCheck.isEnabled()){
-//            card.get(1).click();
-//        }
-//    }
-
-    public void paid(){
-        Actions actions = new Actions(this.driver);
-        actions.moveToElement(paidToCardCheck).build().perform();
-        paidToCardCheck.sendKeys(Keys.ENTER);
-        paidToCardCheck.click();
+    public void paidToCard(){
+        (((Locatable)viewPort1).getCoordinates()).inViewPort();
+        if (paidToCardCheck.isEnabled()){
+            switchControl.get(1).click();
+        }
     }
 
-
+    public void youngFamily(){
+        this.driver.switchTo().defaultContent();
+        (((Locatable)viewPort2).getCoordinates()).inViewPort();
+        this.driver.switchTo().frame(iframe);
+        if (youngFamilyCheck.isEnabled()){
+            switchControl.get(switchControl.size()-1).click();
+        }
+    }
 
 }

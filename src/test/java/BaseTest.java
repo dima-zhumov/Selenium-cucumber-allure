@@ -4,12 +4,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.MortgagePage;
 import pages.SberbankPage;
-
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -45,8 +42,7 @@ public class BaseTest {
         sberbankPage.moveToMortgage();
         sberbankPage.MortgageFinishedButton();
 
-        driver.switchTo().frame(mortgagePage.element);
-       // wait.until(ExpectedConditions.elementToBeClickable(mortgagePage.estateCost));
+        driver.switchTo().frame(mortgagePage.iframe);
 
         Thread.sleep(3000);
         mortgagePage.inputEstateCost();
@@ -55,10 +51,20 @@ public class BaseTest {
 
         Assert.assertEquals("Стоимость квартиры не совпадает",
                 mortgagePage.estateCost.getAttribute("value").replaceAll("[^\\d]",""),"5180000");
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
-        //mortgagePage.paidToCard(mortgagePage.paidToCardButton());
-        mortgagePage.paid();
-Thread.sleep(5000);
+        mortgagePage.paidToCard();
+        wait.until(driver -> mortgagePage.canConfirmCheck.isEnabled());
+        mortgagePage.youngFamily();
+        Thread.sleep(3000);
+
+        Assert.assertEquals("Стоимость квартиры не совпадает",
+                "2 122 000 ₽", mortgagePage.amountOfCredit.getText());
+        Assert.assertEquals("Стоимость квартиры не совпадает",
+                "17 535 ₽", mortgagePage.monthlyPayment.getText());
+        Assert.assertEquals("Стоимость квартиры не совпадает",
+                "29 224 ₽", mortgagePage.requiredIncome.getText());
+        Assert.assertEquals("Стоимость квартиры не совпадает",
+                "11 %", mortgagePage.rate.getText());
     }
 }
