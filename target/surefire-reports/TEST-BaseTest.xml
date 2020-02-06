@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="1" name="BaseTest" time="22.87" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="BaseTest" time="3.252" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="13+33"/>
@@ -60,10 +60,12 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="BaseTest" name="Sberbank" time="22.87">
-    <failure message="Стоимость квартиры не совпадает expected:&lt;[11] %&gt; but was:&lt;[9,3] %&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: Стоимость квартиры не совпадает expected:&lt;[11] %&gt; but was:&lt;[9,3] %&gt;
-	at org.junit.Assert.assertEquals(Assert.java:115)
-	at BaseTest.Sberbank(BaseTest.java:65)
+  <testcase classname="BaseTest" name="Sberbank" time="3.252">
+    <error message="Must provide a location for a move action." type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: Must provide a location for a move action.
+	at org.openqa.selenium.interactions.MoveMouseAction.&lt;init&gt;(MoveMouseAction.java:37)
+	at org.openqa.selenium.interactions.Actions.moveToElement(Actions.java:386)
+	at steps.SberbankSteps.moveToMortgage(SberbankSteps.java:24)
+	at BaseTest.Sberbank(BaseTest.java:51)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -95,11 +97,11 @@
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-</failure>
-    <system-err>Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 7851
+</error>
+    <system-err>Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 7562
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-����. 06, 2020 3:30:46 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+����. 06, 2020 4:24:58 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 </system-err>
   </testcase>

@@ -1,4 +1,6 @@
+steps\MortgageSteps.class
 pages\BasePage.class
 pages\SberbankPage.class
+steps\SberbankSteps.class
 TestProperties.class
 pages\MortgagePage.class

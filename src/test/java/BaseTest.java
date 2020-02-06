@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.MortgagePage;
 import pages.SberbankPage;
+import steps.MortgageSteps;
+import steps.SberbankSteps;
+
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -31,34 +34,35 @@ public class BaseTest {
         driver.quit();
     }
 
-    @Attachment(type = "image/png", value = "Screenshot")
-    public static byte[] takeScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
+//    @Attachment(type = "image/png", value = "Screenshot")
+//    public static byte[] takeScreenshot() {
+//        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//    }
 
     @Test
     public void Sberbank() throws InterruptedException {
         driver.navigate().to(properties.getProperty("app.url"));
         WebDriverWait wait = new WebDriverWait(driver, 30);
 
-        SberbankPage sberbankPage = new SberbankPage(driver);
-        MortgagePage mortgagePage = new MortgagePage(driver);
+        SberbankSteps sberbankSteps = new SberbankSteps(driver);
+        MortgageSteps mortgageSteps = new MortgageSteps(driver);
+        MortgagePage mortgagePage = new MortgagePage();
 
-        sberbankPage.moveToMortgage();
-        sberbankPage.MortgageFinishedButton();
+        sberbankSteps.moveToMortgage();
+        sberbankSteps.MortgageFinishedButton();
 
         driver.switchTo().frame(mortgagePage.iframe);
         Thread.sleep(1500);
-        mortgagePage.inputEstateCost();
+        mortgageSteps.inputEstateCost();
         Thread.sleep(3000);
-        mortgagePage.inputInitialFee();
+        mortgageSteps.inputInitialFee();
         Thread.sleep(3000);
-        mortgagePage.inputCreditTerm();
+        mortgageSteps.inputCreditTerm();
         Thread.sleep(3000);
-        mortgagePage.paid();
+        mortgageSteps.paid();
         Thread.sleep(1000);
         wait.until(driver -> mortgagePage.canConfirmIncome.isEnabled());
-        mortgagePage.youngFamily();
+        mortgageSteps.youngFamily();
         Thread.sleep(2000);
 
         Assert.assertEquals("Стоимость квартиры не совпадает",

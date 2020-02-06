@@ -1,11 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: BaseTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 27.396 sec <<< FAILURE!
-Sberbank(BaseTest)  Time elapsed: 22.87 sec  <<< FAILURE!
-org.junit.ComparisonFailure: Стоимость квартиры не совпадает expected:<[11] %> but was:<[9,3] %>
-	at org.junit.Assert.assertEquals(Assert.java:115)
-	at BaseTest.Sberbank(BaseTest.java:65)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.588 sec <<< FAILURE!
+Sberbank(BaseTest)  Time elapsed: 3.252 sec  <<< ERROR!
+java.lang.IllegalArgumentException: Must provide a location for a move action.
+	at org.openqa.selenium.interactions.MoveMouseAction.<init>(MoveMouseAction.java:37)
+	at org.openqa.selenium.interactions.Actions.moveToElement(Actions.java:386)
+	at steps.SberbankSteps.moveToMortgage(SberbankSteps.java:24)
+	at BaseTest.Sberbank(BaseTest.java:51)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

@@ -10,12 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class MortgagePage extends BasePage {
-    WebDriver driver;
 
-    public MortgagePage(WebDriver driver){
-        PageFactory.initElements(driver,this);
-        this.driver = driver;
-    }
 
     @FindBy(xpath = "//iframe[@id='iFrameResizer0']")
     public WebElement iframe;
@@ -57,42 +52,4 @@ public class MortgagePage extends BasePage {
     public WebElement rate;
 
 
-    public void inputEstateCost() throws InterruptedException {
-        estateCost.clear();
-        estateCost.sendKeys("5180000");
-    }
-
-    public void inputInitialFee() throws InterruptedException {
-        Actions actions = new Actions(this.driver);
-        actions.moveToElement(initialFee).build().perform();
-        actions.click();
-        initialFee.clear();
-        initialFee.sendKeys("3058000");
-    }
-
-    public void inputCreditTerm() throws InterruptedException {
-        Actions actions = new Actions(this.driver);
-        actions.moveToElement(creditTerm).build().perform();
-        actions.click();
-        creditTerm.sendKeys(Keys.CONTROL+"a");
-        Thread.sleep(2000);
-        creditTerm.clear();
-        String text = "30";
-        for (char c: text.toCharArray()) {
-            Thread.sleep(200);
-            creditTerm.sendKeys(String.valueOf(c));
-        }
-    }
-
-    public void paid(){
-        (((Locatable)viewPort1).getCoordinates()).inViewPort();
-        paidToCardCheck.click();
-    }
-
-    public void youngFamily(){
-        this.driver.switchTo().defaultContent();
-        (((Locatable)viewPort2).getCoordinates()).inViewPort();
-        this.driver.switchTo().frame(iframe);
-        youngFamilyDiscount.click();
-    }
 }
