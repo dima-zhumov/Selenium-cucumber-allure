@@ -31,6 +31,11 @@ public class BaseTest {
         driver.quit();
     }
 
+    @Attachment(type = "image/png", value = "Screenshot")
+    public static byte[] takeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
     @Test
     public void Sberbank() throws InterruptedException {
         driver.navigate().to(properties.getProperty("app.url"));
@@ -43,20 +48,18 @@ public class BaseTest {
         sberbankPage.MortgageFinishedButton();
 
         driver.switchTo().frame(mortgagePage.iframe);
-
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         mortgagePage.inputEstateCost();
+        Thread.sleep(3000);
         mortgagePage.inputInitialFee();
+        Thread.sleep(3000);
         mortgagePage.inputCreditTerm();
-
-        Assert.assertEquals("Стоимость квартиры не совпадает",
-                mortgagePage.estateCost.getAttribute("value").replaceAll("[^\\d]",""),"5180000");
         Thread.sleep(3000);
-
-        mortgagePage.paidToCard();
-        wait.until(driver -> mortgagePage.canConfirmCheck.isEnabled());
+        mortgagePage.paid();
+        Thread.sleep(1000);
+        wait.until(driver -> mortgagePage.canConfirmIncome.isEnabled());
         mortgagePage.youngFamily();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         Assert.assertEquals("Стоимость квартиры не совпадает",
                 "2 122 000 ₽", mortgagePage.amountOfCredit.getText());

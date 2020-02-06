@@ -20,13 +20,6 @@ public class SberbankPage extends BasePage{
         @FindBy(xpath = "//a[contains(text(),'готовое') and contains(@class,'lg')]")
         public WebElement mortgageFinishedButton;
 
-        public void MortgageFinishedButton(){
-            mortgageFinishedButton.click();
-        }
 
-        public void moveToMortgage(){
-           Actions actions = new Actions(driver);
-           actions.moveToElement(mortgageButton).build().perform();
-        }
 
 }
