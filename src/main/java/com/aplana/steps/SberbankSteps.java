@@ -1,17 +1,13 @@
-package steps;
+package com.aplana.steps;
 
-import org.openqa.selenium.WebDriver;
+import com.aplana.pages.SberbankPage;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
-import pages.SberbankPage;
+
+import static com.aplana.steps.BaseSteps.getDriver;
+
 
 public class SberbankSteps {
-    WebDriver driver;
 
-    public SberbankSteps (WebDriver driver){
-        PageFactory.initElements(driver,this);
-        this.driver = driver;
-    }
 
     SberbankPage sberbankPage = new SberbankPage();
 
@@ -20,7 +16,7 @@ public class SberbankSteps {
     }
 
     public void moveToMortgage(){
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         actions.moveToElement(sberbankPage.mortgageButton).build().perform();
     }
 

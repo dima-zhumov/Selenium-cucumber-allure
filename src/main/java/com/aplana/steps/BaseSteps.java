@@ -1,22 +1,30 @@
+package com.aplana.steps;
+
+
+import com.aplana.pages.MortgagePage;
+import com.aplana.utils.TestProperties;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.MortgagePage;
-import pages.SberbankPage;
-import steps.MortgageSteps;
-import steps.SberbankSteps;
+import ru.yandex.qatools.allure.annotations.Attachment;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
-    protected static WebDriver driver;
-    protected static String baseUrl;
-    public static Properties properties = TestProperties.getInstance().getProperties();
+public class BaseSteps {
+    private static WebDriver driver;
+    private static String baseUrl;
+    private static Properties properties = TestProperties.getInstance().getProperties();
+
+    public static WebDriver getDriver(){
+        return driver;
+    }
 
     @BeforeClass
     public static void setUp() throws Exception {
@@ -34,18 +42,18 @@ public class BaseTest {
         driver.quit();
     }
 
-//    @Attachment(type = "image/png", value = "Screenshot")
-//    public static byte[] takeScreenshot() {
-//        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//    }
+    @Attachment(type = "image/png", value = "Screenshot")
+    public static byte[] takeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
 
     @Test
     public void Sberbank() throws InterruptedException {
         driver.navigate().to(properties.getProperty("app.url"));
         WebDriverWait wait = new WebDriverWait(driver, 30);
 
-        SberbankSteps sberbankSteps = new SberbankSteps(driver);
-        MortgageSteps mortgageSteps = new MortgageSteps(driver);
+        SberbankSteps sberbankSteps = new SberbankSteps();
+        MortgageSteps mortgageSteps = new MortgageSteps();
         MortgagePage mortgagePage = new MortgagePage();
 
         sberbankSteps.moveToMortgage();

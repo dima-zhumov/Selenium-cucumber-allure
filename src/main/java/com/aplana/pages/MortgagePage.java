@@ -1,16 +1,14 @@
-package pages;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+package com.aplana.pages;
+import com.aplana.steps.BaseSteps;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
 public class MortgagePage extends BasePage {
 
+    public MortgagePage(){
+        PageFactory.initElements(BaseSteps.getDriver(), this);
+    }
 
     @FindBy(xpath = "//iframe[@id='iFrameResizer0']")
     public WebElement iframe;

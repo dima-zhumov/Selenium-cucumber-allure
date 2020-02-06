@@ -1,3 +1,5 @@
+package com.aplana.utils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,4 +25,3 @@ public class TestProperties {
         return properties;
     }
 }
-    

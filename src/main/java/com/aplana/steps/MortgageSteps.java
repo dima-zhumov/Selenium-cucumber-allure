@@ -1,31 +1,23 @@
-package steps;
+package com.aplana.steps;
 
+import com.aplana.pages.MortgagePage;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Locatable;
-import org.openqa.selenium.support.PageFactory;
-import pages.MortgagePage;
 import ru.yandex.qatools.allure.annotations.Step;
 
-public class MortgageSteps {
-    WebDriver driver;
-
-    public MortgageSteps (WebDriver driver){
-        PageFactory.initElements(driver,this);
-        this.driver = driver;
-    }
+public class MortgageSteps extends BaseSteps{
 
     MortgagePage mortgagePage = new MortgagePage();
 
-    @Step("Клик по ипотеке")
+   // @Step("Клик по ипотеке")
     public void inputEstateCost() throws InterruptedException {
         mortgagePage.estateCost.clear();
         mortgagePage.estateCost.sendKeys("5180000");
     }
 
     public void inputInitialFee() throws InterruptedException {
-        Actions actions = new Actions(this.driver);
+        Actions actions = new Actions(getDriver());
         actions.moveToElement(mortgagePage.initialFee).build().perform();
         actions.click();
         mortgagePage.initialFee.clear();
@@ -33,7 +25,7 @@ public class MortgageSteps {
     }
 
     public void inputCreditTerm() throws InterruptedException {
-        Actions actions = new Actions(this.driver);
+        Actions actions = new Actions(getDriver());
         actions.moveToElement(mortgagePage.creditTerm).build().perform();
         actions.click();
         mortgagePage.creditTerm.sendKeys(Keys.CONTROL+"a");
@@ -52,9 +44,9 @@ public class MortgageSteps {
     }
 
     public void youngFamily(){
-        this.driver.switchTo().defaultContent();
+        getDriver().switchTo().defaultContent();
         (((Locatable)mortgagePage.viewPort2).getCoordinates()).inViewPort();
-        this.driver.switchTo().frame(mortgagePage.iframe);
+        getDriver().switchTo().frame(mortgagePage.iframe);
         mortgagePage.youngFamilyDiscount.click();
     }
 }

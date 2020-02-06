@@ -1,6 +1,8 @@
-C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\TestProperties.java
-C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\pages\MortgagePage.java
-C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\steps\SberbankSteps.java
-C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\pages\BasePage.java
-C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\steps\MortgageSteps.java
-C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\pages\SberbankPage.java
+C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\com\aplana\utils\TestProperties.java
+C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\com\aplana\pages\MortgagePage.java
+C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\com\aplana\steps\BaseSteps.java
+C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\com\aplana\steps\SberbankSteps.java
+C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\com\aplana\pages\SberbankPage.java
+C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\com\aplana\steps\MortgageSteps.java
+C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\com\aplana\utils\AllureReporter.java
+C:\Users\Дмитрий\IdeaProjects\Selenium-cucumber-allure\src\main\java\com\aplana\pages\BasePage.java

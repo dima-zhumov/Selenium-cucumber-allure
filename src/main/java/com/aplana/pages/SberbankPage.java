@@ -1,12 +1,15 @@
-package pages;
+package com.aplana.pages;
 
-import org.openqa.selenium.WebDriver;
+import com.aplana.steps.BaseSteps;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SberbankPage extends BasePage{
+
+        public SberbankPage(){
+                PageFactory.initElements(BaseSteps.getDriver(), this);
+        }
 
         @FindBy(xpath = "//span[text()='Ипотека']")
         public WebElement mortgageButton;
