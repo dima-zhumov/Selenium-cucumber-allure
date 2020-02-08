@@ -1,11 +1,12 @@
 package com.aplana.steps;
 
+import com.aplana.pages.BasePage;
 import com.aplana.pages.MortgagePage;
 import io.qameta.allure.Step;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.Locatable;
 
 import static com.aplana.steps.BaseSteps.getDriver;
 
@@ -25,6 +26,8 @@ public class MortgageSteps{
         actions.moveToElement(mortgagePage.initialFee).build().perform();
         actions.click();
         mortgagePage.initialFee.clear();
+        mortgagePage.initialFee.sendKeys(Keys.CONTROL+"a");
+        Thread.sleep(2000);
         mortgagePage.initialFee.sendKeys("3058000");
     }
 
@@ -41,18 +44,19 @@ public class MortgageSteps{
             Thread.sleep(200);
             mortgagePage.creditTerm.sendKeys(String.valueOf(c));
         }
+
     }
 
     @Step("Клик по зарплатной карте")
     public void paid(){
-        (((Locatable)mortgagePage.viewPort1).getCoordinates()).inViewPort();
+        mortgagePage.scroll(mortgagePage.viewPort1);
         mortgagePage.paidToCardCheck.click();
     }
 
     @Step("Клик по молодой семье")
     public void youngFamily(){
         getDriver().switchTo().defaultContent();
-        (((Locatable)mortgagePage.viewPort2).getCoordinates()).inViewPort();
+        mortgagePage.scroll(mortgagePage.viewPort2);
         getDriver().switchTo().frame(mortgagePage.iframe);
         mortgagePage.youngFamilyDiscount.click();
     }

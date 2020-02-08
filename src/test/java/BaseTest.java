@@ -26,11 +26,11 @@ public class BaseTest extends BaseSteps {
         mortgageSteps.switchToIframe();
         Thread.sleep(1500);
         mortgageSteps.inputEstateCost();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         mortgageSteps.inputInitialFee();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         mortgageSteps.inputCreditTerm();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         mortgageSteps.paid();
         Thread.sleep(1000);
         wait.until((Function<? super WebDriver, Boolean>) driver -> mortgageSteps.canConfirm());
@@ -44,6 +44,6 @@ public class BaseTest extends BaseSteps {
         Assert.assertEquals("Сумма необходимого дохода не совпадет",
                 "29 224 ₽", mortgageSteps.getRequiredIncome());
         Assert.assertEquals("Процентная ставка по ипотеке не совпадает",
-                "11 %", mortgageSteps.getRate());
+                "9,3 %", mortgageSteps.getRate());
     }
 }
