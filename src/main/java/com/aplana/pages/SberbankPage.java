@@ -7,9 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SberbankPage extends BasePage{
 
-        public SberbankPage(){
-                PageFactory.initElements(BaseSteps.getDriver(), this);
-        }
 
         @FindBy(xpath = "//span[text()='Ипотека']")
         public WebElement mortgageButton;

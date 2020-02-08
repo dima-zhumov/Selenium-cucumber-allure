@@ -6,9 +6,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MortgagePage extends BasePage {
 
-    public MortgagePage(){
-        PageFactory.initElements(BaseSteps.getDriver(), this);
-    }
 
     @FindBy(xpath = "//iframe[@id='iFrameResizer0']")
     public WebElement iframe;

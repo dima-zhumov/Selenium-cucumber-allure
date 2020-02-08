@@ -1,8 +1,8 @@
 com\aplana\utils\TestProperties.class
 com\aplana\steps\MortgageSteps.class
+com\aplana\utils\AllureListener.class
 com\aplana\steps\SberbankSteps.class
 com\aplana\pages\SberbankPage.class
-com\aplana\utils\AllureReporter.class
 com\aplana\pages\MortgagePage.class
 com\aplana\pages\BasePage.class
 com\aplana\steps\BaseSteps.class
