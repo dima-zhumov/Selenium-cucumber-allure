@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.aplana</groupId>
-    <artifactId>Selenium-cucumber-allure-master</artifactId>
+    <artifactId>Selenium-cucumber-allure</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
