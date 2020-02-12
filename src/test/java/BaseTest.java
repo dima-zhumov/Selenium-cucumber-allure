@@ -24,7 +24,7 @@ public class BaseTest extends BaseSteps {
         sberbankSteps.MortgageFinishedButton();
 
         mortgageSteps.switchToIframe();
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         mortgageSteps.inputEstateCost();
         Thread.sleep(2000);
         mortgageSteps.inputInitialFee();
